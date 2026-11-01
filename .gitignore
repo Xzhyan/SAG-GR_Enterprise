@@ -14,7 +14,7 @@ __pycache__/
 .Python
 
 # Ambientes virtuais
-.python-version
+*.python-version
 venv/
 .venv/
 env/
