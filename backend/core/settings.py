@@ -81,10 +81,16 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
+# Data directory
+DATA_DIR = BASE_DIR / 'data'
+DATA_DIR.mkdir(exist_ok=True) # garante que a pasta 'data' seja criada se não existir
+
+DB_FILE = DATA_DIR / 'db.sqlite3'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'data' / 'db.sqlite3',
+        'NAME': DB_FILE,
     }
 }
 

@@ -4,15 +4,17 @@
 
 {% block content %}
 <div class="flex items-center justify-center mt-10">
-    <div class="w-md bg-zinc-900 border border-zinc-800 p-2 rounded-md shadow-md">
+    <div class="w-md flex flex-col items-center justify-center bg-zinc-900 border border-zinc-800 p-2 rounded-md shadow-md gap-4">
+        <h2 class="font-semibold p-2">Acesso ao sistema</h2>
+
         <form method="POST"
-            class="flex flex-col gap-2"
+            class="w-full flex flex-col gap-4"
         >
             {% csrf_token %}
             {{ form.as_p }}
 
             <button type="submit"
-                class=""
+                class="w-[100px] mx-auto bg-blue-900 border border-blue-950 cursor-pointer hover:bg-blue-800 transition rounded-md shadow-md px-4 font-semibold py-2"
             >
                 Entrar
             </button>

@@ -36,3 +36,11 @@ def user_login(request: HttpRequest) -> HttpResponse:
 
     return render(request, 'user/login.html', context)
 
+
+def user_logout(request: HttpRequest) -> HttpResponse:
+    """Faz o logout do usuário logado"""
+
+    logout(request)
+
+    messages.success(request, "Sessão finalizada!")
+    return redirect('user-login')

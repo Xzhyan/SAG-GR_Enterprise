@@ -20,7 +20,7 @@ class LoginForm(AuthenticationForm):
         label="Senha",
         widget=forms.PasswordInput(
             attrs={
-                'class': "",
+                'class': "w-full bg-zinc-900 hover:bg-zinc-800 transition border border-zinc-800 p-2 rounded-md shadow-md outline-none",
                 'placeholder': "senha de acesso..."
             }
         )
