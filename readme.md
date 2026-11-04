@@ -5,5 +5,5 @@
 
 ## Run tailwindcli
 ```bash
-npx @tailwindcss/cli -y ./user/static/input.css -o ./user/static/output.css --watch
+npx @tailwindcss/cli -y ./backend/user/static/input.css -o ./backend/user/static/output.css --watch
 ```
