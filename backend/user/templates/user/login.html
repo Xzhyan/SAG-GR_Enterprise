@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} Acesso {% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center mt-10">
+    <div class="w-md bg-zinc-900 border border-zinc-800 p-2 rounded-md shadow-md">
+        <form method="POST"
+            class="flex flex-col gap-2"
+        >
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit"
+                class=""
+            >
+                Entrar
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
