@@ -144,3 +144,6 @@ MAILERS = {
 
 # Definição necessária por conta de utilizar um modelo de usuário personalizado
 AUTH_USER_MODEL = 'user.CustomUser'
+
+# Tela de login para os redirects
+LOGIN_URL = 'user-login'

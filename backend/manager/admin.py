@@ -1,3 +1,22 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import (
+    Organization,
+    Department,
+    MemberSkill,
+    Member,
+    Process,
+    ProcessStep
+)
+
+models = [
+    Organization,
+    Department,
+    MemberSkill,
+    Member,
+    Process,
+    ProcessStep
+]
+
+for model in models:
+    admin.site.register(model)

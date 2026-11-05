@@ -3,7 +3,56 @@
 {% block title %} Acesso {% endblock %}
 
 {% block content %}
-<div>
-    <p>sss</p>
+<div class="flex flex-col p-2">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Departamento -->
+        <div class="flex flex-col bg-zinc-900 p-2 gap-2 border border-zinc-600 rounded-md shadow-md">
+            <h3>
+                Departamento:
+                <b class="font-semibold">
+                    {{ department.name }}
+                </b>
+            </h3>
+            
+            <p class="bg-zinc-800 border border-zinc-600 rounded-md shadow-md p-2">
+                {{ department.description }}
+            </p>
+        </div>
+
+        <!-- Membros -->
+        <div class="flex flex-col bg-zinc-900 p-2 gap-2 border border-zinc-600 rounded-md shadow-md">
+            <div class="flex items-center justify-between">
+                <h3>
+                    Lista de membros
+                </h3>
+
+                <a href="">
+                    Gerenciar
+                </a>
+            </div>
+
+            <table>
+                <thead class="flex bg-zinc-800">
+                    <tr>
+                        <td class="p-1">Nome</td>
+                        <td class="p-1">Habilidades</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for member in members %}
+                        <tr>
+                            <td>{{ member.functions }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td>nenhum membro registrado no departamento.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Funções -->
+    </div>
 </div>
 {% endblock %}

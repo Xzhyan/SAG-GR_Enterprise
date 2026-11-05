@@ -110,25 +110,8 @@ class MemberSkill(models.Model):
         return self.name
 
 
-class Function(TimeStampedModel, models.Model):
-    """Modelo das funções dos membros"""
-
-    name = models.CharField(
-        max_length=150,
-        unique=True
-    )
-
-    description = models.TextField(
-        max_length=255,
-        blank=True
-    )
-
-    def __str__(self) -> str:
-        return self.name
-
-
-class Member(TimeStampedModel, models.Model):
-    """Modelo dos membros"""
+class Member(models.Model):
+    """Modelo de membro do sistema"""
 
     name = models.CharField(
         max_length=150
@@ -140,14 +123,8 @@ class Member(TimeStampedModel, models.Model):
         related_name='members'
     )
 
-    role = models.ForeignKey(
-        MemberRole,
-        on_delete=models.PROTECT,
-        related_name='members'
-    )
-
-    function = models.ForeignKey(
-        Function,
+    skill = models.ForeignKey(
+        MemberSkill,
         on_delete=models.PROTECT,
         related_name='members'
     )
@@ -158,19 +135,19 @@ class Member(TimeStampedModel, models.Model):
         return self.name
 
 
-class Assignment(models.Model):
-    """Modelo de atribuições"""
+class Function(models.Model):
+    """Modelo de função, função que vai ser interna de cada departamento"""
 
     department = models.ForeignKey(
         Department,
         on_delete=models.PROTECT,
-        related_name='assignment'
+        related_name='functions'
     )
 
     member = models.ForeignKey(
         Member,
         on_delete=models.SET_NULL,
-        related_name='assignment',
+        related_name='functions',
         null=True,
         blank=True
     )
@@ -185,7 +162,7 @@ class Assignment(models.Model):
         return self.name
 
 
-class Process(TimeStampedModel, models.Model):
+class Process(models.Model):
     """Modelo de processo de departamento"""
 
     name = models.CharField(max_length=150)
@@ -196,8 +173,14 @@ class Process(TimeStampedModel, models.Model):
         related_name="processes"
     )
 
-    assignment = models.ForeignKey(
-        Assignment,
+    function = models.ForeignKey(
+        Function,
+        on_delete=models.PROTECT,
+        related_name="processes"
+    )
+
+    manager = models.ForeignKey(
+        Member,
         on_delete=models.PROTECT,
         related_name="processes"
     )
@@ -206,12 +189,20 @@ class Process(TimeStampedModel, models.Model):
 
     is_active = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name_plural = 'Processes'
+
     def __str__(self) -> str:
         return self.name
 
 
-class ProcessStep(TimeStampedModel, models.Model):
+class ProcessStep(models.Model):
     """Modelo de etapa de processo"""
+
+    order = models.PositiveIntegerField(
+        null=True,
+        blank=True
+    )
 
     process = models.ForeignKey(
         Process,
@@ -219,17 +210,14 @@ class ProcessStep(TimeStampedModel, models.Model):
         related_name="steps"
     )
 
-    order = models.PositiveIntegerField(
-        null=True,
-        blank=True
-    )
+    step_description = models.TextField(max_length=500)
 
-    description = models.TextField(max_length=500)
+    activity_description = models.TextField(max_length=500)
 
     department_involved = models.ForeignKey(
         Department,
         on_delete=models.PROTECT,
-        related_name="process_steps",
+        related_name="steps",
         blank=True,
         null=True
     )
@@ -254,7 +242,7 @@ class ProcessStep(TimeStampedModel, models.Model):
 
 
 class AuditLog(models.Model):
-    """Tabela de auditoria do sistema"""
+    """Modelo para controle de auditoria do sistema"""
 
     class Action(models.TextChoices):
         CREATE = "create", "Criação"
