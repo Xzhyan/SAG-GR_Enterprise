@@ -10,4 +10,7 @@ urlpatterns = [
 
     # Usuário, autenticação
     path('', include('user.urls')),
+
+    # Departamentos
+    path('department', include('manager.urls')),
 ]

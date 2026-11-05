@@ -22,7 +22,7 @@ def user_login(request: HttpRequest) -> HttpResponse:
             login(request, user)
 
             messages.success(request, "Acesso autorizado!")
-            return redirect('user-login')
+            return redirect('department')
 
         else:
             messages.error(request, "Acesso negado!")

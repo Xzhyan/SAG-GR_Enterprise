@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # System apps
     'user',
+    'manager',
 ]
 
 MIDDLEWARE = [

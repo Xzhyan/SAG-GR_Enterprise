@@ -12,6 +12,33 @@
      <link rel="stylesheet" href="{% static 'output.css' %}">
 </head>
 <body class="min-h-screen flex flex-col bg-zinc-800 text-gray-300">
+    <!-- Pop-up de alertas do sistema -->
+    {% if messages %}
+        <div class="fixed top-6 right-6 z-50 flex flex-col gap-2">
+            {% for message in messages %}
+                <div id="pop-up"
+                    class="
+                        font-semibold
+                        bg-zinc-900
+                        border border-zinc-600
+                        px-6 py-4 rounded-md shadow-md
+                        {% if message.tags == 'success' %}
+                            text-green-600
+                        {% elif message.tags == 'error' %}
+                            text-red-600
+                        {% elif message.tags == 'warning' %}
+                            text-yellow-500
+                        {% elif message.tags == 'info' %}
+                            text-blue-600
+                        {% endif %}
+                    "
+                >
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <!-- Cabeçalho -->
     <header class="flex flex-col">
         <!-- Barra do titulo -->
@@ -25,23 +52,29 @@
             <nav class="grid grid-cols-1 bg-zinc-900 md:grid-cols-6 border-b border-zinc-600 text-center font-semibold text-white shadow-md">
                 <div class="md:col-span-4 flex items-center justify-start p-2">
                     <ul class="flex gap-2">
-                        <a href="#"
+                        <a href="{% url 'department' %}"
                             class="bg-zinc-950 border border-zinc-600 hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
                         >
-                            Home
+                            Departamento
                         </a>
 
                         <a href="#"
                             class="bg-zinc-950 border border-zinc-600 hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
                         >
-                            Departamento
+                            Membros
+                        </a>
+
+                        <a href="#"
+                            class="bg-zinc-950 border border-zinc-600 hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
+                        >
+                            Processos
                         </a>
                     </ul>
                 </div>
                 
                 <div class="md:col-span-2 flex items-center justify-end p-2">
                     <ul class="flex gap-2">
-                        <a href="#"
+                        <a href="{% url 'user-logout' %}"
                             class="bg-red-800 border border-red-950 hover:bg-red-700 transition rounded-md shadow-md px-4 py-2"
                         >
                             Sair
