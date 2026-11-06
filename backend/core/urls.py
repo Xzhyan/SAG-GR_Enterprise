@@ -5,8 +5,11 @@ urlpatterns = [
     # Browser Reload
     path('__reload__/', include('django_browser_reload.urls')),
 
-    # Admin
+    # Admin/Django
     path('admin/', admin.site.urls),
+
+    # Admin
+    path('administration/', include('admin.urls')),
 
     # Usuário, autenticação
     path('', include('user.urls')),

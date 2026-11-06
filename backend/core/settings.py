@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
 
     # System apps
+    'adminitration',
     'user',
     'manager',
 ]
@@ -147,3 +148,8 @@ AUTH_USER_MODEL = 'user.CustomUser'
 
 # Tela de login para os redirects
 LOGIN_URL = 'user-login'
+
+# Controle da sessão dos usuários logados
+SESSION_COOKIE_AGE = 1800
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
