@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Admin
-    path('administration/', include('admin.urls')),
+    path('saggr/admin/', include('administration.urls')),
 
     # Usuário, autenticação
     path('', include('user.urls')),

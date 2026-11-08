@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
 
     # System apps
-    'adminitration',
+    'administration',
     'user',
     'manager',
 ]

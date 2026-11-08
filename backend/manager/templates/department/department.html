@@ -34,14 +34,15 @@
             <table>
                 <thead class="flex bg-zinc-800">
                     <tr>
-                        <td class="p-1">Nome</td>
-                        <td class="p-1">Habilidades</td>
+                        <th class="p-1">Nome</th>
+                        <th class="p-1">Habilidades</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for member in members %}
                         <tr>
-                            <td>{{ member.functions }}</td>
+                            <td>{{ member.name }}</td>
+                            <td>{{ member.functions.name }}</td>
                         </tr>
                     {% empty %}
                         <tr>

@@ -51,21 +51,29 @@
             <!-- Barra de navegação -->
             <nav class="grid grid-cols-1 bg-zinc-900 md:grid-cols-6 border-b border-zinc-600 text-center font-semibold text-white shadow-md">
                 <div class="md:col-span-4 flex items-center justify-start p-2">
-                    <ul class="flex gap-2">
+                    <ul class="flex md:flex-row flex-col gap-2">
+                        {% if request.user.is_staff %}
+                            <a href="{% url 'administration' %}"
+                                class="bg-zinc-950 border {% if request.resolver_match.url_name == 'administration' %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
+                            >
+                                Admin
+                            </a>
+                        {% endif %}
+
                         <a href="{% url 'department' %}"
-                            class="bg-zinc-950 border border-zinc-600 hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
+                            class="bg-zinc-950 border {% if request.resolver_match.url_name == 'department' %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
                         >
                             Departamento
                         </a>
 
                         <a href="#"
-                            class="bg-zinc-950 border border-zinc-600 hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
+                            class="bg-zinc-950 border {% if request.resolver_match.url_name == 'members' %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
                         >
                             Membros
                         </a>
 
                         <a href="#"
-                            class="bg-zinc-950 border border-zinc-600 hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
+                            class="bg-zinc-950 border {% if request.resolver_match.url_name == 'process' %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
                         >
                             Processos
                         </a>

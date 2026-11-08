@@ -6,7 +6,8 @@ from .models import (
     MemberSkill,
     Member,
     Process,
-    ProcessStep
+    ProcessStep,
+    AuditLog
 )
 
 models = [
@@ -15,7 +16,8 @@ models = [
     MemberSkill,
     Member,
     Process,
-    ProcessStep
+    ProcessStep,
+    AuditLog
 ]
 
 for model in models:
