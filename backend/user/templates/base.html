@@ -11,7 +11,7 @@
     <!-- Tailwindcss -->
      <link rel="stylesheet" href="{% static 'output.css' %}">
 </head>
-<body class="min-h-screen flex flex-col bg-zinc-800 text-gray-300">
+<body class="min-h-screen flex flex-col bg-zinc-800 text-gray-300 text-sm">
     <!-- Pop-up de alertas do sistema -->
     {% if messages %}
         <div class="fixed top-6 right-6 z-50 flex flex-col gap-2">
@@ -54,7 +54,7 @@
                     <ul class="flex md:flex-row flex-col gap-2">
                         {% if request.user.is_staff %}
                             <a href="{% url 'administration' %}"
-                                class="bg-zinc-950 border {% if request.resolver_match.url_name == 'administration' %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
+                                class="bg-zinc-950 border {% if '/saggr/admin/' in request.path %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
                             >
                                 Admin
                             </a>

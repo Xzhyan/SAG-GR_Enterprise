@@ -1,12 +1,17 @@
+# Shortcuts
 from django.shortcuts import render, redirect, get_object_or_404
+
+# Http
 from django.http import HttpRequest, HttpResponse
+
+# Contrib
 from django.contrib.auth import login, logout, update_session_auth_hash, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+# models
 User = get_user_model() # modelo do usuário
 
-# models
 from manager.models import (
     Department,
     Member,
@@ -14,7 +19,6 @@ from manager.models import (
     Process,
     ProcessStep
 )
-
 
 
 @login_required

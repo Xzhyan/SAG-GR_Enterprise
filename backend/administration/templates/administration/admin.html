@@ -6,26 +6,37 @@
 <div class="flex flex-col p-2">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
         <div class="md:col-span-2 bg-zinc-900 border border-zinc-600 p-2 rounded-md shadow-md text-center">
-            <h2 class="font-semibold">Menu de controle</h2>
+            <h2 class="font-semibold">Menu de Administração</h2>
 
             <ul class="flex flex-col gap-2 p-2">
-                <a href="#"
-                    class="bg-zinc-950 border {% if request.resolver_match.url_name == 'department' %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
+                <a href="{% url 'administration' %}"
+                    class="bg-zinc-950 border {% if request.resolver_match.url_name == 'administration' %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
                 >
                     Organização
                 </a>
 
-                <a href="#"
-                    class="bg-zinc-950 border {% if request.resolver_match.url_name == 'department' %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
+                <a href="{% url 'manage-users' %}"
+                    class="bg-zinc-950 border {% if request.resolver_match.url_name == 'manage-users' %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
                 >
                     Usuários
+                </a>
+
+                <a href="#"
+                    class="bg-zinc-950 border {% if request.resolver_match.url_name == 'users' %} border-blue-600 {% else %} border-zinc-600 {% endif %} hover:bg-gray-900 transition rounded-md shadow-md px-4 py-2"
+                >
+                    Departamentos
                 </a>
             </ul>
         </div>
         
         <!-- Organização -->
-        {% if org_page %}
-            {% include 'administration/components/org_page.html' %}
+        {% if manage_org %}
+            {% include 'administration/components/manage_org.html' %}
+        {% endif %}
+
+        <!-- Usuários -->
+        {% if manage_users %}
+            {% include 'administration/components/manage_users.html' %}
         {% endif %}
     </div>
 </div>

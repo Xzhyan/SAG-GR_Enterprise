@@ -1,10 +1,15 @@
+# Shortcuts
 from django.shortcuts import render, redirect, get_object_or_404
+
+# Http
 from django.http import HttpRequest, HttpResponse
+
+# Contrib
 from django.contrib.auth import login, logout, update_session_auth_hash, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-
+# models
 User = get_user_model() # modelo do usuário
 
 # forms
@@ -22,7 +27,7 @@ def user_login(request: HttpRequest) -> HttpResponse:
             login(request, user)
 
             messages.success(request, "Acesso autorizado!")
-            return redirect('department')
+            return redirect('administration')
 
         else:
             messages.error(request, "Acesso negado!")
